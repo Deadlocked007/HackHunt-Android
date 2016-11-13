@@ -29,6 +29,12 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+            <Button
+                android:text="Button"
+                android:layout_width="264dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/button" />
+
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

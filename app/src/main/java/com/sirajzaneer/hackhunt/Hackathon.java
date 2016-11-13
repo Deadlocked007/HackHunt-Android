@@ -27,6 +27,7 @@ class Hackathon implements Serializable {
             location = json.getString("location");
             dateString = json.getString("date");
             imageUrl = json.getString("image");
+            link = json.getString("link");
         } catch (JSONException e) {
             e.printStackTrace();
         }
