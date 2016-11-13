@@ -1,36 +1,25 @@
 package com.sirajzaneer.hackhunt;
 
-import android.app.DownloadManager;
 import android.content.Context;
-import android.content.res.AssetManager;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.JsonReader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.*;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * Created by Siraj on 11/12/16.
@@ -49,9 +38,11 @@ public class HackathonsFragment extends Fragment {
         View content = inflater.inflate(R.layout.fragment_hackathons, container, false);
         hackathonsGrid = (GridView) content.findViewById(R.id.hackathonGrid);
 
+        c =  this.getContext();
+
         new LoadHackathons().execute();
 
-        c =  this.getContext();
+
         return content;
     }
 
@@ -100,6 +91,17 @@ public class HackathonsFragment extends Fragment {
             if (aBoolean) {
                 adapter = new HackathonsAdapter(c, resultJ);
                 hackathonsGrid.setAdapter(adapter);
+
+                hackathonsGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(c, HackathonDetail.class);
+                        Hackathon hackathon = adapter.getHackathons()[position];
+                        intent.putExtra("hackathon", hackathon);
+                        startActivity(intent);
+
+                    }
+                });
             }
         }
     }

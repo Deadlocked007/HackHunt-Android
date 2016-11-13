@@ -3,13 +3,15 @@ package com.sirajzaneer.hackhunt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Siraj on 11/12/16.
  */
 
-public class Hackathon {
+@SuppressWarnings("serial")
+class Hackathon implements Serializable {
     String name;
     String link;
     String imageUrl;
@@ -19,9 +21,12 @@ public class Hackathon {
     Date startDate;
     Date endDate;
 
-    public Hackathon(JSONObject json) {
+    Hackathon(JSONObject json) {
         try {
             name = json.getString("name");
+            location = json.getString("location");
+            dateString = json.getString("date");
+            imageUrl = json.getString("image");
         } catch (JSONException e) {
             e.printStackTrace();
         }
