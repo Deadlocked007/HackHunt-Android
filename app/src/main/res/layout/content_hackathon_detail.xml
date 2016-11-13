@@ -11,6 +11,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/detailPosterImage"/>
+        android:id="@+id/detailPosterImage"
+        android:background="@color/colorPrimary" />
 
 </android.support.v4.widget.NestedScrollView>

@@ -20,11 +20,13 @@ public class HackathonDetail extends AppCompatActivity {
         setContentView(R.layout.activity_hackathon_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
+
+
         hackathon = (Hackathon) getIntent().getSerializableExtra("hackathon");
-        toolbar.setTitle("hi");
         ImageView poster = (ImageView) findViewById(R.id.detailPosterImage);
 
+        toolbar.setTitle(hackathon.name);
+        setSupportActionBar(toolbar);
         AppBarLayout appBar = (AppBarLayout) findViewById(R.id.app_bar);
         Picasso.with(this).load(hackathon.imageUrl).into(poster);
         poster.setAdjustViewBounds(true);
